@@ -1,18 +1,8 @@
 //https://www.geeksforgeeks.org/problems/merge-two-sorted-linked-lists/1
-package org.scaler.dsa_problems_java.gfg;
+package org.scaler.dsa_problems_java.gfg.GFG_Merge_two_sorted_linked_lists;
 
-//{ Driver Code Starts
-import java.util.*;
 
-class Node {
-    int data;
-    Node next;
-
-    Node(int x) {
-        data = x;
-        next = null;
-    }
-}
+import java.util.Scanner;
 
 public class Main {
     public static void printList(Node head) {
@@ -45,6 +35,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Enter number of test cases");
         int T = sc.nextInt();
         sc.nextLine(); // Consume the newline character
         while (T-- > 0) {
@@ -52,6 +43,7 @@ public class Main {
             Node head2 = null;
 
             // Reading first linked list input
+            System.out.println("Enter first sorted list");
             String input1 = sc.nextLine();
             String[] elems1 = input1.split(" ");
             for (String elem : elems1) {
@@ -59,6 +51,7 @@ public class Main {
             }
 
             // Reading second linked list input
+            System.out.println("Enter second sorted list");
             String input2 = sc.nextLine();
             String[] elems2 = input2.split(" ");
             for (String elem : elems2) {
@@ -66,57 +59,10 @@ public class Main {
             }
 
             // Merging sorted linked lists
-            GFG_Merge_two_sorted_linked_lists obj = new GFG_Merge_two_sorted_linked_lists();
+            Solution obj = new Solution();
             Node mergedHead = obj.sortedMerge(head1, head2);
             printList(mergedHead); // Print the merged sorted list
         }
         sc.close();
-    }
-}
-
-// } Driver Code Ends
-
-
-/*
-  Node is defined as
-    class Node
-    {
-        int data;
-        Node next;
-        Node(int d) {data = d; next = null; }
-    }
-*/
-
-public class GFG_Merge_two_sorted_linked_lists {
-    Node sortedMerge(Node head1, Node head2) {
-        // code here
-        Node head = null, tail = null, temp = null;
-        while (head1 != null && head2 != null) {
-            if (head1.data <= head2.data) {
-                temp = head1;
-                head1 = head1.next;
-                temp.next = null;
-            } else {
-                temp = head2;
-                head2 = head2.next;
-                temp.next = null;
-            }
-
-            if (head == null) {
-                head = temp;
-                tail = temp;
-            } else {
-                tail.next = temp;
-                tail = tail.next;
-            }
-        }
-
-        if (head1 != null) {
-            tail.next = head1;
-        }
-        if (head2 != null) {
-            tail.next = head2;
-        }
-        return head;
     }
 }
