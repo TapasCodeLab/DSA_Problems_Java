@@ -1,78 +1,9 @@
-package org.scaler.dsa_problems_java.gfg;
+package org.scaler.dsa_problems_java.gfg.GFG_Rotate_a_Linked_List;
 
 import java.io.*;
 import java.util.*;
 
-public class GFG_Rotate_a_Linked_List {
-        // Function to rotate a linked list.
-        public Node rotate(Node head, int k) {
-            // add code here
-            Node temp = head;
-            Node temp2 = head;
-            for(int i=0;i<k-1;i++){
-                head=head.next;
-            }
-            temp=head;
-            head = head.next;
-            temp.next = null;
-
-            if(head==null){
-                return temp2;
-            } else {
-                Node tail = head;
-                while(tail.next != null){
-                    tail = tail.next;
-                }
-                tail.next = temp2;
-                return head;
-            }
-
-        }
-
-}
-
-/*
-//{ Driver Code Starts
-// Initial Template for Java
-
-
-
-class Node {
-    int data;
-    Node next;
-
-    Node(int x) {
-        data = x;
-        next = null;
-    }
-}
-
-
-// } Driver Code Ends
-/* node of linked list:
-
-class Node{
-    int data;
-    Node next;
-    Node(int d){
-        data=d;
-        next=null;
-    }
-}
-
-
-
-class Solution {
-    public Node rotate(Node head, int k) {
-        // add code here
-
-    }
-}
-
-
-//{ Driver Code Starts.
-
-public class GFG {
+public class Main {
     static void printList(Node node) {
         while (node != null) {
             System.out.print(node.data + " ");
@@ -83,10 +14,12 @@ public class GFG {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        //System.out.println("Enter number of test cases:");
         int t = Integer.parseInt(br.readLine().trim());
 
         while (t-- > 0) {
             List<Integer> arr = new ArrayList<>();
+            //System.out.println("Enter eliments of link list:");
             String input = br.readLine().trim();
             if (!input.isEmpty()) {
                 String[] numbers = input.split("\\s+");
@@ -106,6 +39,7 @@ public class GFG {
                     tail = tail.next;
                 }
             }
+            //System.out.println("Enter value of k:");
             int k = Integer.parseInt(br.readLine().trim());
             Solution ob = new Solution();
             head = ob.rotate(head, k);
@@ -115,7 +49,3 @@ public class GFG {
         }
     }
 }
-
-// } Driver Code Ends
-
-*/
